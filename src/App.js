@@ -78,11 +78,11 @@ const Projects = () => (
   </div>
 );
 
-const Research = () => (
+const Research = ({ location }) => (
   <div id="container-wrap" className='research'>
     <Header></Header>
     {/* <Container></Container> */}
-    <ResearchPage></ResearchPage>
+    <ResearchPage location={location}></ResearchPage>
     <Footer></Footer>
   </div>
 );
@@ -96,7 +96,7 @@ const Main = () => (
       {/* <Route exact path='/skill' component={Skill}></Route> */}
       {/* <Route exact path='/framework' component={FrameworkSkill}></Route> */}
       <Route exact path='/development' component={Projects}></Route>
-      <Route exact path='/research' component={Research}></Route>
+      <Route path='/research/:tab?' component={Research}></Route>
     </Switch>
   </BrowserRouter>
 );

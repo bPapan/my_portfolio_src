@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class ResearchPage extends Component {
   render() {
+    const currentPath = this.props.location?.pathname || '/research';
+    const isAreas = currentPath === '/research' || currentPath === '/research/areas';
+    const isPublications = currentPath === '/research/publications';
+
     return (
 
       <section className="mytabs2_area p_120">
@@ -9,14 +14,14 @@ export default class ResearchPage extends Component {
           <div className="tabs_inner">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
               <li className="nav-item">
-                <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Areas of Interest</a>
+                <Link className={`nav-link ${isAreas ? 'active' : ''}`} to="/research/areas">Areas of Interest</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Publications</a>
+                <Link className={`nav-link ${isPublications ? 'active' : ''}`} to="/research/publications">Publications</Link>
               </li>
             </ul>
             <div className="tab-content" id="myTabContent">
-              <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div className={`tab-pane fade ${isAreas ? 'show active' : ''}`} id="areas" role="tabpanel">
                 <ul className="list2" style={{alignSelf:"center"}}>
                   <li>
                     <div className="media2">
@@ -52,7 +57,7 @@ export default class ResearchPage extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
+              <div className={`tab-pane fade ${isPublications ? 'show active' : ''}`} id="publications" role="tabpanel">
                 <ul className="list2">
                 <li>
                     <div className="media">
