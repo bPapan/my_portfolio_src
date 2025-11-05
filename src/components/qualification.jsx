@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class EducationPage extends Component {
   render() {
+    const currentPath = this.props.location?.pathname || '/qualification';
+    const isExperience = currentPath === '/qualification' || currentPath === '/qualification/experience';
+    const isEducation = currentPath === '/qualification/education';
+    const isAchievements = currentPath === '/qualification/achievements';
+
     return (
       <section className="mytabs_area p_120">
         <div className="container">
@@ -11,17 +17,17 @@ export default class EducationPage extends Component {
           <div className="tabs_inner">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
               <li className="nav-item">
-                <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Experience</a>
+                <Link className={`nav-link ${isExperience ? 'active' : ''}`} to="/qualification/experience">Experience</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Education</a>
+                <Link className={`nav-link ${isEducation ? 'active' : ''}`} to="/qualification/education">Education</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="achieve-tab" data-toggle="tab" href="#achieve" role="tab" aria-controls="achieve" aria-selected="false">Achievements</a>
+                <Link className={`nav-link ${isAchievements ? 'active' : ''}`} to="/qualification/achievements">Achievements</Link>
               </li>
             </ul>
             <div className="tab-content" id="myTabContent">
-              <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div className={`tab-pane fade ${isExperience ? 'show active' : ''}`} id="experience" role="tabpanel">
                 <ul className="list">
                 <li>
                     <span />
@@ -88,7 +94,7 @@ export default class EducationPage extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div className={`tab-pane fade ${isEducation ? 'show active' : ''}`} id="education" role="tabpanel">
                 <ul className="list">
                   {/* <li>
                     <span />
@@ -196,7 +202,7 @@ export default class EducationPage extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="tab-pane fade" id="achieve" role="tabpanel" aria-labelledby="achieve-tab">
+              <div className={`tab-pane fade ${isAchievements ? 'show active' : ''}`} id="achievements" role="tabpanel">
                 <ul className="list">
                   <li>
                     <span />

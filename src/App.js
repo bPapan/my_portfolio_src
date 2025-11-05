@@ -43,10 +43,10 @@ const Contact = () => (
   </div>
 );
 
-const Qualification = () => (
+const Qualification = ({ location }) => (
   <div id="container-wrap" className='qualification'>
     <Header></Header>
-    <EducationPage></EducationPage>
+    <EducationPage location={location}></EducationPage>
     <Footer></Footer>
   </div>
 );
@@ -92,7 +92,7 @@ const Main = () => (
     <Switch>
       <Route exact path='/' component={Home}></Route>
       <Route exact path='/contact' component={Contact}></Route>
-      <Route exact path='/qualification' component={Qualification}></Route>
+      <Route path='/qualification/:tab?' component={Qualification}></Route>
       {/* <Route exact path='/skill' component={Skill}></Route> */}
       {/* <Route exact path='/framework' component={FrameworkSkill}></Route> */}
       <Route exact path='/development' component={Projects}></Route>
