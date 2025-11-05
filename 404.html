@@ -2,18 +2,22 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- <title>Page Not Found</title> -->
+    <title>Redirecting...</title>
     <script type="text/javascript">
-      // Try to get the last visited path from sessionStorage
-      var lastPath = sessionStorage.getItem('lastPath');
+      // GitHub Pages SPA redirect solution
+      // This script captures the requested path and redirects to index.html
+      // with the path information preserved in the query string
 
-      if (lastPath) {
-        // If lastPath exists, redirect to that path
-        window.location.replace(lastPath);
-      } else {
-        // Fallback to the main portfolio page if lastPath does not exist
-        window.location.replace('/portfolio/');
-      }
+      var pathSegmentsToKeep = 1; // Adjust based on your repo structure (1 for /portfolio/)
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
     </script>
   </head>
   <body>

@@ -6,6 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>Bishal Basak Papan</title>
+
+        <!-- GitHub Pages SPA redirect restoration script -->
+        <!-- This script runs before React loads and restores the correct route -->
+        <script type="text/javascript">
+            // Single Page Apps for GitHub Pages
+            // https://github.com/rafgraph/spa-github-pages
+            (function(l) {
+                if (l.search[1] === '/' ) {
+                    var decoded = l.search.slice(1).split('&').map(function(s) {
+                        return s.replace(/~and~/g, '&')
+                    }).join('?');
+                    window.history.replaceState(null, null,
+                        l.pathname.slice(0, -1) + decoded + l.hash
+                    );
+                }
+            }(window.location))
+        </script>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="vendors/linericon/style.css">

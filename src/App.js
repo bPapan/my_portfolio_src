@@ -15,20 +15,9 @@ import ResearchPage from './components/research'
 //import Timeline from './components/timeline'
 import { Switch, Route } from 'react-router-dom';
 // import { HashRouter } from 'react-router-dom'
-import { BrowserRouter, withRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 class App extends Component {
-  // Use componentDidUpdate to store the current path
-  componentDidUpdate(prevProps) {
-    const { location } = this.props;
-
-    // Check if the path has changed
-    if (location.pathname !== prevProps.location.pathname) {
-      // Store the current path in sessionStorage
-      sessionStorage.setItem('lastPath', location.pathname);
-    }
-  }
-
   render() {
     return (
       <div id="container-wrap">
@@ -37,8 +26,6 @@ class App extends Component {
     );
   }
 }
-
-const AppWithRouter = withRouter(App);
 
 const Home = () => (
   <div id="container-wrap" className='home'>
@@ -114,4 +101,4 @@ const Main = () => (
   </BrowserRouter>
 );
 
-export default AppWithRouter;
+export default App;
