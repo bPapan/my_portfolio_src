@@ -14,8 +14,8 @@ import ProjectsPage from './components/projects'
 import ResearchPage from './components/research'
 //import Timeline from './components/timeline'
 import { Switch, Route } from 'react-router-dom';
-import { HashRouter } from 'react-router-dom'
-// import { BrowserRouter } from 'react-router-dom'
+// import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 class App extends Component {
   render() {
@@ -88,7 +88,7 @@ const Research = () => (
 );
 
 const Main = () => (
-  <HashRouter basename={process.env.PUBLIC_URL}>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route exact path='/' component={Home}></Route>
       <Route exact path='/contact' component={Contact}></Route>
@@ -98,7 +98,7 @@ const Main = () => (
       <Route exact path='/development' component={Projects}></Route>
       <Route exact path='/research' component={Research}></Route>
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default App;
